@@ -4,13 +4,11 @@
 
 State::State(): m_name("State")
 {
-	m_transition = new Transition();
 }
 
 State::State(const string& name, const Transition& transition)
 {
 	m_name = name;
-	m_transition = new Transition(transition);
 }
 
 State::State(const State& s)
@@ -18,19 +16,26 @@ State::State(const State& s)
 	
 }
 
+State& State::operator=(const State& s)
+{
+}
+
 State::~State()
 {
-	delete m_transition;
 }
 
 void State::set_name(const string& name)
 {
 }
 
-void State::set_transition(const Transition& transition)
+void State::set_transitions(const map<Transition, State>& transitions)
 {
 }
 
-void State::add_transition(const Transition& transition, const State& sate)
+void State::add_transition(const Transition& transition, const State& state)
+{
+}
+
+State State::get_next_state(const Transition& transition) const
 {
 }

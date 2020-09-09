@@ -1,7 +1,5 @@
 #pragma once
 
-//TODO : complete class (operator=)
-
 class Transition
 {
 private:
@@ -11,6 +9,9 @@ public:
 	Transition();
 	Transition(const Transition& transition);
 
+	//Operator=
+	Transition& operator=(const Transition & t);
+	
 	//Destructor
 	~Transition();
 

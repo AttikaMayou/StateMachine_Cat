@@ -1,34 +1,39 @@
 #pragma once
+#include <map>
 #include <string>
+#include <vector>
+
 #include"Transition.h"
 using namespace std;
-
-//TODO : complete class (operator=)
 
 class State
 {
 private:
 	string m_name;
-	Transition* m_transition;
-
+	map<Transition, State> m_transitions;
+	
 public:
 	//Constructors
 	State();
 	State(const string& name, const Transition& transition);
 	State(const State& s);
 
+	//Operator =
+	State& operator=(const State& s);
+
 	//Destructor
 	~State();
 
 	//Getter
 	string get_name() const { return m_name; }
-	Transition* get_transition() const { return m_transition; }
+	map<Transition, State> get_transitions() const { return m_transitions; }
 	
 	//Setter
 	void set_name(const string& name);
-	void set_transition(const Transition& transition);
+	void set_transitions(const map<Transition, State>& transitions);
 
 	//Functions
-	void add_transition(const Transition& transition, const State& sate);
+	void add_transition(const Transition& transition, const State& state);
+	State get_next_state(const Transition& transition) const;
 };
 

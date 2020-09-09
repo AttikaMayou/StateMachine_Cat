@@ -7,7 +7,7 @@ StateMachine::StateMachine()
 	m_start = new State();
 }
 
-StateMachine::StateMachine(const State& start, const State& end, const Transition& transition)
+StateMachine::StateMachine(const State& start, const State& end)
 {
 }
 
@@ -15,11 +15,14 @@ StateMachine::StateMachine(const StateMachine& s)
 {
 }
 
+StateMachine& StateMachine::operator=(const StateMachine& s)
+{
+}
+
 StateMachine::~StateMachine()
 {
 	delete m_start;
 	delete m_end;
-	delete m_transition;
 }
 
 void StateMachine::set_start(const State& start)
@@ -34,10 +37,10 @@ void StateMachine::set_current(const State& current)
 {
 }
 
-void StateMachine::set_transition(const Transition& transition)
+void StateMachine::process_state()
 {
 }
 
-void StateMachine::process_state()
+void StateMachine::change_state(const State& state)
 {
 }
