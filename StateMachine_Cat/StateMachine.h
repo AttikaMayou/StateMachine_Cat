@@ -1,16 +1,18 @@
 #pragma once
 #include"State.h"
+
+//TODO : complete class (operator=)
+
 class StateMachine
 {
 private:
 	State* m_start;
 	State* m_end;
-	State* m_current;
-	Transition* m_transition;
+	//Transition* m_transition;
 
 public:
 	//Constructors
-	StateMachine(): m_start(), m_end(), m_current(), m_transition() {}
+	StateMachine();
 	StateMachine(const State& start, const State& end, const Transition& transition);
 	StateMachine(const StateMachine& s);
 
@@ -20,7 +22,6 @@ public:
 	//Getter
 	State* get_start() const { return m_start; }
 	State* get_end() const { return m_end; }
-	State* get_current() const { return m_current; }
 	Transition* get_transition() const { return m_transition; }
 	
 	//Setter
