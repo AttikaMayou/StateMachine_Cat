@@ -1,5 +1,7 @@
 #include "Cat.h"
 
+//TODO : complete functions
+
 Cat::Cat(float cared): m_cared(cared)
 {
 	Pet();
