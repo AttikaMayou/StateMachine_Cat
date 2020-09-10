@@ -7,6 +7,7 @@ void create_test_state_machine()
 {
 	StateMachine state_machine;
 
+	//make a new function to create a state for a state machine 
 	State* state_c = new State("C");
 	State* state_b = new State("B");
 	Transition* transition = new Transition();
