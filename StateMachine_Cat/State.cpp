@@ -58,6 +58,7 @@ int State::get_transitions_size() const
 
 void State::add_transition(Transition* transition, State* state)
 {
+	cout << "Add transition from " << this->get_name() << " to " << state->get_name() << endl;
 	pair<Transition, State> pair(*transition, *state);
 	m_transitions.push_back(pair);
 	//m_transitions.emplace_back(transition, state);

@@ -2,42 +2,33 @@
 
 StateMachine::StateMachine()
 {
-	m_start = new State();
-	m_end = new State();
-	m_current = m_start;
-	Transition* transition = new Transition();
-	m_start->add_transition(transition, m_end);
-	m_states.push_back(m_start);
-	m_states.push_back(m_end);
+	m_idle = new State("Idle");
+	m_current = m_idle;
+	m_states.push_back(m_idle);
 }
 
-StateMachine::StateMachine(State* start, State* end)
+StateMachine::StateMachine(State* idle)
 {
-	m_start = start;
-	m_end = end;
-	m_current = m_start;
+	m_idle = idle;
+	m_current = m_idle;
 	m_states.clear();
-	m_states.push_back(m_start);
-	m_states.push_back(m_end);
+	m_states.push_back(m_idle);
 }
 
 StateMachine::StateMachine(const StateMachine& s)
 {
-	m_start = s.get_start();
-	m_end = s.get_end();
-	m_current = m_start;
+	m_idle = s.get_idle();
+	m_current = m_idle;
 	m_states.clear();
 	m_states = s.get_states();
 }
 
 StateMachine& StateMachine::operator=(const StateMachine& s)
 {
-	m_start = s.get_start();
-	m_end = s.get_end();
-	m_current = m_start;
+	m_idle = s.get_idle();
+	m_current = m_idle;
 	m_states.clear();
-	m_states.push_back(m_start);
-	m_states.push_back(m_end);
+	m_states.push_back(m_idle);
 	return *this;
 }
 
@@ -45,18 +36,12 @@ StateMachine::~StateMachine()
 {
 	m_states.clear();
 	//delete m_current;
-	delete m_start;
-	delete m_end;
+	delete m_idle;
 }
 
-void StateMachine::set_start(State* start)
+void StateMachine::set_idle(State* idle)
 {
-	m_start = start;
-}
-
-void StateMachine::set_end(State* end)
-{
-	m_end = end;
+	m_idle = idle;
 }
 
 void StateMachine::set_current(State* current)
@@ -81,6 +66,7 @@ void StateMachine::process_state()
 		if(transitions[i].first.process())
 		{
 			this->change_state(&(transitions[i].second));
+			break;
 		}
 	}
 }

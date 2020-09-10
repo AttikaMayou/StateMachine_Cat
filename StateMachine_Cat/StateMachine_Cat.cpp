@@ -18,6 +18,10 @@ int main()
 	state_machine.add_state(state_b);
 	state_machine.add_state(state_c);
 	state_machine.get_current()->add_transition(transition, state_a);
+
+	state_machine.process_state();
+	state_machine.process_state();
+	state_machine.process_state();
 	
     return 0;
 }
