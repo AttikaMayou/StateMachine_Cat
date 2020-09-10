@@ -1,7 +1,6 @@
 #pragma once
 #include <map>
 #include <string>
-#include <vector>
 
 #include"Transition.h"
 using namespace std;
@@ -15,7 +14,7 @@ private:
 public:
 	//Constructors
 	State();
-	State(const string& name, const Transition& transition);
+	State(const string& name, const map<Transition, State>& transitions);
 	State(const State& s);
 
 	//Operator =
