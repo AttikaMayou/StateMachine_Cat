@@ -14,6 +14,8 @@ private:
 public:
 	//Constructors
 	State();
+	State(const string& name);
+	State(const string& name, Transition* transition, State* state);
 	State(const string& name, const vector<pair<Transition, State>>& transitions);
 	State(const State& s);
 
@@ -33,7 +35,6 @@ public:
 
 	//Functions
 	int get_transitions_size() const;
-	void add_transition(const Transition& transition, const State& state);
-	State get_next_state(const Transition& transition) const;
+	void add_transition(Transition* transition, State* state);
 };
 

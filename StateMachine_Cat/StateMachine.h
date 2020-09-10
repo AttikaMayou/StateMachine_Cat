@@ -10,7 +10,7 @@ private:
 	State* m_start;
 	State* m_end;
 	State* m_current;
-	vector<State> m_states;
+	vector<State*> m_states;
 
 public:
 	//Constructors
@@ -28,6 +28,7 @@ public:
 	State* get_start() const { return m_start; }
 	State* get_end() const { return m_end; }
 	State* get_current() const { return m_current; }
+	vector<State*> get_states() const { return m_states; }
 	
 	//Setter
 	void set_start(State* start);
@@ -35,7 +36,7 @@ public:
 	void set_current(State* current);
 
 	//Functions
-	void add_state(const State& state);
+	void add_state(State* state);
 	void process_state();
 	void change_state(State* state);
 	

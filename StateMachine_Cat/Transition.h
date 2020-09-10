@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 //TODO : make child of Translation to handle different cases
 	//(comparison between float, between bool...) 

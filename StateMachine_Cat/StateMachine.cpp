@@ -5,8 +5,10 @@ StateMachine::StateMachine()
 	m_start = new State();
 	m_end = new State();
 	m_current = m_start;
-	m_states.push_back(*m_start);
-	m_states.push_back(*m_end);
+	Transition* transition = new Transition();
+	m_start->add_transition(transition, m_end);
+	m_states.push_back(m_start);
+	m_states.push_back(m_end);
 }
 
 StateMachine::StateMachine(State* start, State* end)
@@ -15,8 +17,8 @@ StateMachine::StateMachine(State* start, State* end)
 	m_end = end;
 	m_current = m_start;
 	m_states.clear();
-	m_states.push_back(*m_start);
-	m_states.push_back(*m_end);
+	m_states.push_back(m_start);
+	m_states.push_back(m_end);
 }
 
 StateMachine::StateMachine(const StateMachine& s)
@@ -25,8 +27,7 @@ StateMachine::StateMachine(const StateMachine& s)
 	m_end = s.get_end();
 	m_current = m_start;
 	m_states.clear();
-	m_states.push_back(*m_start);
-	m_states.push_back(*m_end);
+	m_states = s.get_states();
 }
 
 StateMachine& StateMachine::operator=(const StateMachine& s)
@@ -35,8 +36,8 @@ StateMachine& StateMachine::operator=(const StateMachine& s)
 	m_end = s.get_end();
 	m_current = m_start;
 	m_states.clear();
-	m_states.push_back(*m_start);
-	m_states.push_back(*m_end);
+	m_states.push_back(m_start);
+	m_states.push_back(m_end);
 	return *this;
 }
 
@@ -60,10 +61,11 @@ void StateMachine::set_end(State* end)
 
 void StateMachine::set_current(State* current)
 {
+	cout << "Change current state from " << this->get_current()->get_name() << " to " << current->get_name() << endl;
 	m_current = current;
 }
 
-void StateMachine::add_state(const State& state)
+void StateMachine::add_state(State* state)
 {
 	m_states.push_back(state);
 }
