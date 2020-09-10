@@ -9,14 +9,15 @@ using namespace std;
 class State
 {
 private:
-	const Action* const m_action;
+	Action* m_action;
 	vector<const Precondition* const> m_preconditions;
 	vector<const Effect* const> m_effects;
 
 public:
 	//Constructors
 	State();
-	State(const Action* const action, const Precondition* const precondition, const Effect* const effect);
+	State(Action* action, const Precondition* const precondition, const Effect* const effect);
+	State(Action* action, vector<const Precondition* const> preconditions, vector<const Effect* const> effects);
 	State(const State& state);
 	
 	//Operator=
@@ -27,13 +28,13 @@ public:
 	
 	//Getter
 	const Action* const get_action() const { return m_action; }
-	const vector<const Precondition* const>& get_precondition() const { return m_preconditions; }
-	const vector<const Effect* const>& get_effect() const { return m_effects; }
+	const vector<const Precondition* const>& get_preconditions() const { return m_preconditions; }
+	const vector<const Effect* const>& get_effects() const { return m_effects; }
 
 	//Setter
-	void set_action(const Action* const action);
-	void set_precondition(const vector<const Precondition* const> precondition);
-	void set_effect(const vector<const Effect* const> effect);
+	void set_action(Action* action);
+	void set_preconditions(const vector<const Precondition* const> preconditions);
+	void set_effects(const vector<const Effect* const> effects);
 
 	//Functions
 	void add_precondition(const Precondition* const precondition);

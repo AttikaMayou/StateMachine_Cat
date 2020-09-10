@@ -1,13 +1,13 @@
 #pragma once
-#include <string>
+#include "EffectType.h"
 
 using namespace std;
 
 class Precondition
 {
 private:
-	string m_name;
-
+	EffectType m_type;
+	
 public:
 	//Constructors
 	Precondition();

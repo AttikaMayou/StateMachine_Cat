@@ -2,32 +2,32 @@
 
 StateMachine::StateMachine()
 {
-	m_idle = new State("Idle");
-	m_current = m_idle;
-	m_states.push_back(m_idle);
+	m_begin = new State("Idle");
+	m_current = m_begin;
+	m_states.push_back(m_begin);
 	m_transitions = vector<Transition*>();
 }
 
 StateMachine::StateMachine(State* idle)
 {
-	m_idle = idle;
-	m_current = m_idle;
+	m_begin = idle;
+	m_current = m_begin;
 	m_states = vector<State*>();
-	m_states.push_back(m_idle);
+	m_states.push_back(m_begin);
 	m_transitions = vector<Transition*>();
 }
 
 StateMachine::StateMachine(const StateMachine& s)
 {
-	m_idle = s.get_idle();
-	m_current = m_idle;
+	m_begin = s.get_begin();
+	m_current = m_begin;
 	m_states = s.get_states();
 	m_transitions = s.get_transitions();
 }
 
 StateMachine& StateMachine::operator=(const StateMachine& s)
 {
-	m_idle = s.get_idle();
+	m_begin = s.get_begin();
 	m_current = s.get_current();
 	m_states = s.get_states();
 	m_transitions = s.get_transitions();
@@ -36,12 +36,12 @@ StateMachine& StateMachine::operator=(const StateMachine& s)
 
 StateMachine::~StateMachine()
 {
-	for (unsigned int i = 0; i < m_states.size(); ++i)
+	for (size_t i = 0; i < m_states.size(); ++i)
 	{
 		delete m_states[i];
 	}
 
-	for(unsigned int i = 0; i < m_transitions.size(); ++i)
+	for(size_t i = 0; i < m_transitions.size(); ++i)
 	{
 		delete m_transitions[i];
 	}
@@ -49,7 +49,7 @@ StateMachine::~StateMachine()
 
 void StateMachine::set_idle(State* idle)
 {
-	m_idle = idle;
+	m_begin = idle;
 }
 
 void StateMachine::set_current(State* current)

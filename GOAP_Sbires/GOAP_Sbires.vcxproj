@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectType.h" />
     <ClInclude Include="Precondition.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="World.h" />
