@@ -1,9 +1,12 @@
 #pragma once
 
+//TODO : make child of Translation to handle different cases
+	//(comparison between float, between bool...) 
+
 class Transition
 {
 private:
-
+	
 public:
 	//Constructors
 	Transition();
@@ -15,11 +18,7 @@ public:
 	//Destructor
 	~Transition();
 
-	//Getter
-
-	//Setter
-
 	//Function
-	void process();
+	bool process() const;
 };
 

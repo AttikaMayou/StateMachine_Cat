@@ -1,16 +1,21 @@
 #pragma once
+#include <vector>
 #include"State.h"
+
+using namespace std;
 
 class StateMachine
 {
 private:
 	State* m_start;
 	State* m_end;
+	State* m_current;
+	vector<State> m_states;
 
 public:
 	//Constructors
 	StateMachine();
-	StateMachine(const State& start, const State& end);
+	StateMachine(State* start, State* end);
 	StateMachine(const StateMachine& s);
 
 	//Operator =
@@ -22,15 +27,17 @@ public:
 	//Getter
 	State* get_start() const { return m_start; }
 	State* get_end() const { return m_end; }
+	State* get_current() const { return m_current; }
 	
 	//Setter
-	void set_start(const State& start);
-	void set_end(const State& end);
-	void set_current(const State& current);
+	void set_start(State* start);
+	void set_end(State* end);
+	void set_current(State* current);
 
 	//Functions
+	void add_state(const State& state);
 	void process_state();
-	void change_state(const State& state);
+	void change_state(State* state);
 	
 };
 

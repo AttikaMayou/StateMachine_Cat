@@ -1,7 +1,5 @@
 #include "Transition.h"
 
-//TODO : complete functions
-
 Transition::Transition()
 {
 }
@@ -18,6 +16,7 @@ Transition::~Transition()
 {
 }
 
-void Transition::process()
+bool Transition::process() const
 {
+	return true;
 }

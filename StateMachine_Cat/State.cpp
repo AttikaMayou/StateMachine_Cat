@@ -2,10 +2,10 @@
 
 State::State(): m_name("State")
 {
-	m_transitions = map<Transition, State>();
+	m_transitions = new vector<pair<Transition, State>>();
 }
 
-State::State(const string& name, const map<Transition, State>& transitions)
+State::State(const string& name, const 	vector<pair<Transition, State>>& transitions)
 {
 	m_name = name;
 	m_transitions = transitions;
@@ -33,17 +33,22 @@ void State::set_name(const string& name)
 	m_name = name;
 }
 
-void State::set_transitions(const map<Transition, State>& transitions)
+void State::set_transitions(const 	vector<pair<Transition, State>>& transitions)
 {
 	m_transitions = transitions;
 }
 
+int State::get_transitions_size() const
+{
+	return m_transitions.size();
+}
+
 void State::add_transition(const Transition& transition, const State& state)
 {
-	m_transitions.insert(pair<Transition, State>(transition, state));
+	m_transitions.push_back(pair<Transition, State>(transition, state));
 }
 
 State State::get_next_state(const Transition& transition) const
 {
-	return m_transitions.at(transition);
+	return State();
 }
