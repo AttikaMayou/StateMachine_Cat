@@ -2,13 +2,13 @@
 
 State::State(): m_name("State")
 {
-	m_transitions = vector<pair<Transition, State>>();
+	m_transitions = vector<pair<Transition*, State*>>();
 }
 
 State::State(const string& name)
 {
 	m_name = name;
-	m_transitions = vector<pair<Transition, State>>();
+	m_transitions = vector<pair<Transition*, State*>>();
 }
 
 State::State(const string& name,Transition* transition, State* state)
@@ -17,7 +17,7 @@ State::State(const string& name,Transition* transition, State* state)
 	this->add_transition(transition, state);
 }
 
-State::State(const string& name, const 	vector<pair<Transition, State>>& transitions)
+State::State(const string& name, const 	vector<pair<Transition*, State*>>& transitions)
 {
 	m_name = name;
 	m_transitions = transitions;
@@ -46,20 +46,14 @@ void State::set_name(const string& name)
 	m_name = name;
 }
 
-void State::set_transitions(const 	vector<pair<Transition, State>>& transitions)
+void State::set_transitions(const 	vector<pair<Transition*, State*>>& transitions)
 {
 	m_transitions = transitions;
-}
-
-int State::get_transitions_size() const
-{
-	return m_transitions.size();
 }
 
 void State::add_transition(Transition* transition, State* state)
 {
 	cout << "Add transition from " << this->get_name() << " to " << state->get_name() << endl;
-	pair<Transition, State> pair(*transition, *state);
+	pair<Transition*, State*> pair(transition, state);
 	m_transitions.push_back(pair);
-	//m_transitions.emplace_back(transition, state);
 }

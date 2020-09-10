@@ -34,9 +34,10 @@ StateMachine& StateMachine::operator=(const StateMachine& s)
 
 StateMachine::~StateMachine()
 {
-	m_states.clear();
-	//delete m_current;
-	delete m_idle;
+	for (int i = 0; i < m_states.size(); ++i)
+	{
+		delete m_states[i];
+	}
 }
 
 void StateMachine::set_idle(State* idle)
@@ -58,14 +59,26 @@ void StateMachine::add_state(State* state)
 void StateMachine::process_state()
 {
 	State* current_state = this->get_current();
-	vector<pair<Transition, State>> transitions = current_state->get_transitions();
+	if(current_state == nullptr)
+	{
+		cout << "No current state !!!!!" << endl;
+		return;
+	}
+	cout << "Process current state : " << current_state->get_name() << endl;
+	vector<pair<Transition*, State*>> transitions = current_state->get_transitions();
 	int const transitions_size = transitions.size();
 
+	if(transitions_size <= 0)
+	{
+		cout << "No transition from state " << current_state->get_name() << endl;
+		return;
+	}
+	
 	for(int i = 0; i < transitions_size; ++i)
 	{
-		if(transitions[i].first.process())
+		if(transitions[i].first->process())
 		{
-			this->change_state(&(transitions[i].second));
+			this->change_state(transitions[i].second);
 			break;
 		}
 	}
