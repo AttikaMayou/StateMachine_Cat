@@ -24,12 +24,12 @@ class State
 private:
 	StateType m_type;
 	vector<pair<Transition*, State*>> m_transitions;
-	const void(*action)();
+	void(*action)();
 	
 public:
 	//Constructors
 	State();
-	State(const void(*function)());
+	State(void(*function)());
 	
 	//Destructor
 	~State();

@@ -1,5 +1,10 @@
 #pragma once
 
-const float THIRST_THRESHOLD = 50.0f;
-const float HUNGER_THRESHOLD = 50.0f;
-const float CARED_THRESHOLD = 50.0f;
+class CONST_VALUES
+{
+public:
+	constexpr static float THIRST_THRESHOLD = 50.0f;
+	constexpr static float HUNGER_THRESHOLD = 50.0f;
+	constexpr static float CARED_THRESHOLD = 50.0f;
+};
+

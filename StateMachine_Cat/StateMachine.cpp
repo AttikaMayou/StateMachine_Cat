@@ -85,7 +85,8 @@ void StateMachine::process_state()
 	
 	for(size_t i = 0; i < transitions_size; ++i)
 	{
-		if(transitions[i].first->process())
+		Transition* curr_transition = transitions[i].first;
+		if(curr_transition->process())
 		{
 			this->change_state(transitions[i].second);
 			break;

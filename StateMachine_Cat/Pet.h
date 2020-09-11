@@ -21,8 +21,8 @@ private:
 
 public:
 	//Constructors
-	Pet(): m_name("Pet"), m_hunger(0.0f), m_thirst (0.0f), m_cared(100.0f), m_thirst_factor(1.0f), m_hunger_factor(1.0f), m_cared_factor(1.0f), m_type(PetType::ANY), m_state_machine(new StateMachine()) {}
-	Pet(string name, float hunger, float thirst, float needs, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine);
+	Pet();
+	Pet(string name, float hunger, float thirst, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine);
 	Pet(const Pet& p);
 
 	//Operator=

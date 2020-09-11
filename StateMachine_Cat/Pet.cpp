@@ -1,7 +1,13 @@
 #include "Pet.h"
 
+Pet::Pet(): m_name("Pet"), m_hunger(0.0f), m_thirst(0.0f), m_cared(100.0f), m_thirst_factor(1.0f),
+            m_hunger_factor(1.0f), m_cared_factor(1.0f), m_type(PetType::ANY)
+{
+	m_state_machine = new StateMachine();
+}
+
 //Add ASSERT => NEVER has 1.0f > factor > 5.0f and needs etc 0.0f > values > 100.0f
-Pet::Pet(string name, float hunger, float thirst, float needs, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine) :
+Pet::Pet(string name, float hunger, float thirst, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine) :
 	m_name(name), m_hunger(hunger), m_thirst(thirst), m_cared(cared), m_thirst_factor(thirst_factor), m_hunger_factor(hunger_factor), m_cared_factor(cared_factor), m_type(type), m_state_machine(state_machine)
 {
 }

@@ -4,10 +4,10 @@ State::State()
 {
 	m_type = StateType::NONE;
 	m_transitions = vector<pair<Transition*, State*>>();
-	action = []() -> const void {};
+	action = []() -> void {};
 }
 
-State::State(const void(*function)()): action(function)
+State::State(void(*function)()): action(function)
 {
 	m_type = StateType::NONE;
 	m_transitions = vector<pair<Transition*, State*>>();

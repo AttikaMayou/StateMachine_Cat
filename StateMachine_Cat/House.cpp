@@ -1,7 +1,8 @@
 #include "House.h"
 
-House::House(): water_glass_on_table(true), bowl_cat(false), bowl_dog(false), human_available(true), m_state_machine(new StateMachine())
+House::House(): water_glass_on_table(true), bowl_cat(false), bowl_dog(false), human_available(true)
 {
+	m_state_machine = new StateMachine();
 }
 
 House::House(const House& house)
@@ -92,10 +93,3 @@ void House::free_human()
 {
 	set_human_status(true);
 }
-
-
-
-
-
-
-
