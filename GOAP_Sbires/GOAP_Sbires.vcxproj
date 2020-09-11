@@ -140,17 +140,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
+    <ClCompile Include="Besoins.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="GOAP_Sbires.cpp" />
     <ClCompile Include="Precondition.cpp" />
+    <ClCompile Include="Recolte.cpp" />
+    <ClCompile Include="Ressources.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="Villageois.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
+    <ClInclude Include="Besoins.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Precondition.h" />
+    <ClInclude Include="Recolte.h" />
+    <ClInclude Include="Ressources.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="Villageois.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

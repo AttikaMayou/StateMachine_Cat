@@ -12,9 +12,9 @@ public:
 	//Constructors
 
 	//Operator=
-
+	Effect();
 	//Destructor
-
+	~Effect();
 	//Getter
 
 	//Setter
