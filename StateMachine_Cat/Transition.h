@@ -1,26 +1,23 @@
 #pragma once
 #include <iostream>
-using namespace std;
+#include "Pet.h"
+#include "World.h"
 
-//TODO : make child of Translation to handle different cases
-	//(comparison between float, between bool...) 
+using namespace std;
 
 class Transition
 {
 private:
-	
+	const bool(*comparison) (const Pet* const pet, const World* const world);
 public:
 	//Constructors
 	Transition();
-	Transition(const Transition& transition);
-
-	//Operator=
-	Transition& operator=(const Transition & t);
+	Transition(const bool(*function)(const Pet* const pet, const World* const world));
 	
 	//Destructor
 	~Transition();
 
 	//Function
-	bool process() const;
+	bool process(const Pet* const pet, const World* const world) const;
 };
 

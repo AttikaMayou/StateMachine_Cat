@@ -53,17 +53,17 @@ State::~State()
 	}
 }
 
-void State::set_action(Action* action)
+void State::set_action(Action* const action)
 {
 	m_action = action;
 }
 
-void State::set_preconditions(const vector<const Precondition* const> preconditions)
+void State::set_preconditions(const vector<const Precondition* const>& preconditions)
 {
 	m_preconditions = preconditions;
 }
 
-void State::set_effects(const vector<const Effect* const> effects)
+void State::set_effects(const vector<const Effect* const>& effects)
 {
 	m_effects = effects;
 }

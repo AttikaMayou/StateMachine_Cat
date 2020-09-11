@@ -1,39 +1,35 @@
 #pragma once
 #include <vector>
-#include <string>
 #include"Transition.h"
+#include "World.h"
 
 using namespace std;
 
 class State
 {
 private:
-	string m_name;
-	vector<pair<Transition*, State*>> m_transitions;
+	WorldState m_type;
+	vector<pair<const Transition* const, State* const>> m_transitions;
+	const void(*action)();
 	
 public:
 	//Constructors
 	State();
-	State(const string& name);
-	State(const string& name, Transition* transition, State* state);
-	State(const string& name, const vector<pair<Transition*, State*>>& transitions);
-	State(const State& s);
-
-	//Operator =
-	State& operator=(const State& s);
-
+	State(const void(*function)());
+	
 	//Destructor
 	~State();
 
 	//Getter
-	string get_name() const { return m_name; }
-	vector<pair<Transition*, State*>> get_transitions() const { return m_transitions; }
+	const WorldState get_type() const { return m_type; }
+	const vector<pair<const Transition* const, State* const>> get_transitions() const { return m_transitions; }
 	
 	//Setter
-	void set_name(const string& name);
-	void set_transitions(const vector<pair<Transition*, State*>>& transitions);
+	void set_type(WorldState type);
+	void set_transitions(const vector<pair<const Transition* const, State* const>>& transitions);
 
 	//Functions
-	void add_transition(Transition* transition, State* state);
+	void add_transition(const Transition* const transition, State* const state);
+	void perform_action() const;
 };
 

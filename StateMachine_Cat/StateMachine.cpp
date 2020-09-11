@@ -5,16 +5,16 @@ StateMachine::StateMachine()
 	m_begin = new State("Idle");
 	m_current = m_begin;
 	m_states.push_back(m_begin);
-	m_transitions = vector<Transition*>();
+	m_transitions = vector<const Transition* const>();
 }
 
-StateMachine::StateMachine(State* idle)
+StateMachine::StateMachine(State* const begin)
 {
-	m_begin = idle;
+	m_begin = begin;
 	m_current = m_begin;
-	m_states = vector<State*>();
+	m_states = vector<const State*>();
 	m_states.push_back(m_begin);
-	m_transitions = vector<Transition*>();
+	m_transitions = vector<const Transition* const>();
 }
 
 StateMachine::StateMachine(const StateMachine& s)
@@ -47,22 +47,22 @@ StateMachine::~StateMachine()
 	}
 }
 
-void StateMachine::set_idle(State* idle)
-{
-	m_begin = idle;
-}
-
-void StateMachine::set_current(State* current)
+void StateMachine::set_current(State* const current)
 {
 	cout << "Change current state from " << this->get_current()->get_name() << " to " << current->get_name() << endl;
 	m_current = current;
 }
 
 //Assert quand on essaie d'ajouter un state qui existe déjà
-void StateMachine::add_state(State* state)
+void StateMachine::add_state(State* const state)
 {
 	//check if state machine already contains state
 	m_states.push_back(state);
+}
+
+void StateMachine::set_begin(State* const begin)
+{
+	m_begin = begin;
 }
 
 void StateMachine::process_state()
@@ -74,7 +74,7 @@ void StateMachine::process_state()
 		return;
 	}
 	cout << "Process current state : " << current_state->get_name() << endl;
-	vector<pair<Transition*, State*>> transitions = current_state->get_transitions();
+	vector<pair<const Transition* const, State* const>> transitions = current_state->get_transitions();
 	size_t const transitions_size = transitions.size();
 
 	if(transitions_size <= 0)
@@ -93,7 +93,7 @@ void StateMachine::process_state()
 	}
 }
 
-void StateMachine::change_state(State* state)
+void StateMachine::change_state(State* const state)
 {
 	this->set_current(state);
 }

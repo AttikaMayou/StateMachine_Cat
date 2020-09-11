@@ -1,39 +1,16 @@
 #include "State.h"
 
-State::State(): m_name("State")
+State::State()
 {
-	m_transitions = vector<pair<Transition*, State*>>();
+	m_type = WorldState::NONE;
+	m_transitions = vector<pair<const Transition* const, State* const>>();
+	action = []() -> const void {};
 }
 
-State::State(const string& name)
+State::State(const void(*function)()): action(function)
 {
-	m_name = name;
-	m_transitions = vector<pair<Transition*, State*>>();
-}
-
-State::State(const string& name,Transition* transition, State* state)
-{
-	m_name = name;
-	this->add_transition(transition, state);
-}
-
-State::State(const string& name, const 	vector<pair<Transition*, State*>>& transitions)
-{
-	m_name = name;
-	m_transitions = transitions;
-}
-
-State::State(const State& s)
-{
-	m_name = s.get_name();
-	m_transitions = s.get_transitions();
-}
-
-State& State::operator=(const State& s)
-{
-	m_name = s.get_name();
-	m_transitions = s.get_transitions();
-	return *this;
+	m_type = WorldState::NONE;
+	m_transitions = vector<pair<const Transition* const, State* const>>();
 }
 
 State::~State()
@@ -41,19 +18,26 @@ State::~State()
 	m_transitions.clear();
 }
 
-void State::set_name(const string& name)
+void State::set_type(WorldState type)
 {
-	m_name = name;
+	m_type = type;
 }
 
-void State::set_transitions(const 	vector<pair<Transition*, State*>>& transitions)
+void State::set_transitions(const vector<pair<const Transition* const, State* const>>& transitions)
 {
 	m_transitions = transitions;
 }
 
-void State::add_transition(Transition* transition, State* state)
+void State::add_transition(const Transition* const transition, State* const state)
 {
-	cout << "Add transition from " << this->get_name() << " to " << state->get_name() << endl;
-	pair<Transition*, State*> pair(transition, state);
+	//cout << "Add transition from " << this->get_name() << " to " << state->get_name() << endl;
+	pair<const Transition* const, State* const> pair(transition, state);
 	m_transitions.push_back(pair);
 }
+
+void State::perform_action() const
+{
+	cout << "Perform state action" << endl;
+	action();
+}
+

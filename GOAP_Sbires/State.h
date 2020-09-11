@@ -27,14 +27,14 @@ public:
 	~State();
 	
 	//Getter
-	const Action* const get_action() const { return m_action; }
+	Action* const get_action() const { return m_action; }
 	const vector<const Precondition* const>& get_preconditions() const { return m_preconditions; }
 	const vector<const Effect* const>& get_effects() const { return m_effects; }
 
 	//Setter
-	void set_action(Action* action);
-	void set_preconditions(const vector<const Precondition* const> preconditions);
-	void set_effects(const vector<const Effect* const> effects);
+	void set_action(Action* const action);
+	void set_preconditions(const vector<const Precondition* const>& preconditions);
+	void set_effects(const vector<const Effect* const>& effects);
 
 	//Functions
 	void add_precondition(const Precondition* const precondition);
