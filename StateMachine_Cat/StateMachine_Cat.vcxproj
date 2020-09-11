@@ -139,8 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cat.cpp" />
-    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="Pet.cpp" />
     <ClCompile Include="State.cpp" />
@@ -150,8 +148,7 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cat.h" />
-    <ClInclude Include="Dog.h" />
+    <ClInclude Include="CONST_VALUES.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="Pet.h" />
     <ClInclude Include="State.h" />

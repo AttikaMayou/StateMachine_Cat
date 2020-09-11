@@ -24,12 +24,6 @@
     <ClCompile Include="Pet.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Cat.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Dog.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -50,12 +44,6 @@
     <ClInclude Include="Pet.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Cat.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Dog.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -67,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="House.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CONST_VALUES.h">
+      <Filter>Fichiers sources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

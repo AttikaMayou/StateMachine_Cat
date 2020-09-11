@@ -2,19 +2,19 @@
 
 StateMachine::StateMachine()
 {
-	m_begin = new State("Idle");
+	m_begin = new State();
 	m_current = m_begin;
 	m_states.push_back(m_begin);
-	m_transitions = vector<const Transition* const>();
+	m_transitions = vector<Transition*>();
 }
 
-StateMachine::StateMachine(State* const begin)
+StateMachine::StateMachine(State* begin)
 {
 	m_begin = begin;
 	m_current = m_begin;
-	m_states = vector<const State*>();
+	m_states = vector<State*>();
 	m_states.push_back(m_begin);
-	m_transitions = vector<const Transition* const>();
+	m_transitions = vector<Transition*>();
 }
 
 StateMachine::StateMachine(const StateMachine& s)
@@ -49,37 +49,37 @@ StateMachine::~StateMachine()
 
 void StateMachine::set_current(State* const current)
 {
-	cout << "Change current state from " << this->get_current()->get_name() << " to " << current->get_name() << endl;
+	cout << "Change current state from " << this->get_current()->get_type() << " to " << current->get_type() << endl;
 	m_current = current;
 }
 
 //Assert quand on essaie d'ajouter un state qui existe déjà
-void StateMachine::add_state(State* const state)
+void StateMachine::add_state(State* state)
 {
 	//check if state machine already contains state
 	m_states.push_back(state);
 }
 
-void StateMachine::set_begin(State* const begin)
+void StateMachine::set_begin(State* begin)
 {
 	m_begin = begin;
 }
 
 void StateMachine::process_state()
 {
-	const State* const current_state = this->get_current();
+	State* current_state = this->get_current();
 	if(current_state == nullptr)
 	{
 		cout << "No current state !!!!!" << endl;
 		return;
 	}
-	cout << "Process current state : " << current_state->get_name() << endl;
-	vector<pair<const Transition* const, State* const>> transitions = current_state->get_transitions();
+	cout << "Process current state : " << current_state->get_type() << endl;
+	vector<pair<Transition*, State*>> transitions = current_state->get_transitions();
 	size_t const transitions_size = transitions.size();
 
 	if(transitions_size <= 0)
 	{
-		cout << "No transition from state " << current_state->get_name() << endl;
+		cout << "No transition from state " << current_state->get_type() << endl;
 		return;
 	}
 	
@@ -93,7 +93,7 @@ void StateMachine::process_state()
 	}
 }
 
-void StateMachine::change_state(State* const state)
+void StateMachine::change_state(State* state)
 {
 	this->set_current(state);
 }

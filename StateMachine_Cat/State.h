@@ -1,15 +1,29 @@
 #pragma once
 #include <vector>
-#include"Transition.h"
-#include "World.h"
+#include "Transition.h"
 
 using namespace std;
+
+enum StateType
+{
+	NONE,
+	BREAK_GLASS,
+	PET_CAT,
+	PET_DOG,
+	FILL_CAT_BOWL,
+	FILL_DOG_BOWL,
+	DOG_DRINKING_WATER_ON_GROUND,
+	CAT_EATING,
+	DOG_EATING,
+	CAT_DRINKING,
+	DOG_DRINKING
+};
 
 class State
 {
 private:
-	WorldState m_type;
-	vector<pair<const Transition* const, State* const>> m_transitions;
+	StateType m_type;
+	vector<pair<Transition*, State*>> m_transitions;
 	const void(*action)();
 	
 public:
@@ -21,15 +35,15 @@ public:
 	~State();
 
 	//Getter
-	const WorldState get_type() const { return m_type; }
-	const vector<pair<const Transition* const, State* const>> get_transitions() const { return m_transitions; }
+	StateType get_type() const { return m_type; }
+	vector<pair<Transition*, State*>> get_transitions() const { return m_transitions; }
 	
 	//Setter
-	void set_type(WorldState type);
-	void set_transitions(const vector<pair<const Transition* const, State* const>>& transitions);
+	void set_type(StateType type);
+	void set_transitions(const vector<pair<Transition*, State*>>& transitions);
 
 	//Functions
-	void add_transition(const Transition* const transition, State* const state);
+	void add_transition(Transition* transition, State* state);
 	void perform_action() const;
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include"State.h"
+#include "State.h"
 #include "Transition.h"
 
 using namespace std;
@@ -10,13 +10,13 @@ class StateMachine
 private:
 	State* m_begin;
 	State* m_current;
-	vector<const State*> m_states;
-	vector<const Transition* const> m_transitions;
+	vector<State*> m_states;
+	vector<Transition*> m_transitions;
 
 public:
 	//Constructors
 	StateMachine();
-	StateMachine(State* const begin);
+	StateMachine(State* begin);
 	StateMachine(const StateMachine& s);
 
 	//Operator =
@@ -28,16 +28,16 @@ public:
 	//Getter
 	State* get_begin() const { return m_begin; }
 	State* get_current() const { return m_current; }
-	const vector<const State*>& get_states() const { return m_states; }
-	const vector<const Transition* const>& get_transitions() const { return m_transitions; }
+	const vector<State*>& get_states() const { return m_states; }
+	const vector<Transition*>& get_transitions() const { return m_transitions; }
 	
 	//Setter
-	void set_begin(State* const begin);
-	void set_current(State* const current);
+	void set_begin(State* begin);
+	void set_current(State* current);
 
 	//Functions
-	void add_state(State* const state);
+	void add_state(State* state);
 	void process_state();
-	void change_state(State* const state);
+	void change_state(State* state);
 };
 

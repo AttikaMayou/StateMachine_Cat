@@ -3,10 +3,10 @@
 
 Transition::Transition()
 {
-	comparison = [](const Pet* const pet, const World* const world) -> const bool { return true; };
+	comparison = [](const Pet* const pet, const House* const house) -> const bool { return true; };
 }
 
-Transition::Transition(const bool(* function)(const Pet* const pet, const World* const world)): comparison(function)
+Transition::Transition(const bool(* function)(const Pet* const pet, const House* const house)): comparison(function)
 {
 }
 	
@@ -14,9 +14,9 @@ Transition::~Transition()
 {
 }
 
-bool Transition::process(const Pet* const pet, const World* const world) const
+bool Transition::process(const Pet* const pet, const House* const house) const
 {
 	cout << "Process transition" << endl;
 	//auto comparison = [](auto value, auto threshold) -> bool {return value <= threshold; };
-	return comparison(pet, world);
+	return comparison(pet, house);
 }

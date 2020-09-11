@@ -1,5 +1,5 @@
 #pragma once
-#include "World.h"
+#include "StateMachine.h"
 #include <iostream>
 
 using namespace std;
@@ -17,11 +17,12 @@ private:
 	string m_name;
 	float m_hunger, m_thirst, m_cared, m_thirst_factor, m_hunger_factor, m_cared_factor;
 	PetType m_type;
+	StateMachine* m_state_machine;
 
 public:
 	//Constructors
-	Pet(): m_name("Pet"), m_hunger(0.0f), m_thirst (0.0f), m_cared(100.0f), m_thirst_factor(1.0f), m_hunger_factor(1.0f), m_cared_factor(1.0f), m_type(PetType::ANY) {}
-	Pet(string name, float hunger, float thirst, float needs, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type);
+	Pet(): m_name("Pet"), m_hunger(0.0f), m_thirst (0.0f), m_cared(100.0f), m_thirst_factor(1.0f), m_hunger_factor(1.0f), m_cared_factor(1.0f), m_type(PetType::ANY), m_state_machine(new StateMachine()) {}
+	Pet(string name, float hunger, float thirst, float needs, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine);
 	Pet(const Pet& p);
 
 	//Operator=
@@ -39,6 +40,7 @@ public:
 	float get_hunger_factor() const { return m_hunger_factor; }
 	float get_cared_factor() const { return m_cared_factor; }
 	PetType get_type() const { return m_type; }
+	StateMachine* get_state_machine() const { return m_state_machine; }
 	
 	//Setter
 	void set_name(string name);
@@ -49,8 +51,11 @@ public:
 	void set_hunger_factor(float val);
 	void set_cared_factor(float val);
 	void set_type(PetType type);
+	void set_state_machine(StateMachine* state_machine);
 
 	//Functions
 	void update_pet();
+	void reset_needs();
+	void being_cared();
 };
 
