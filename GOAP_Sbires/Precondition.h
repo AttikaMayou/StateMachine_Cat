@@ -7,7 +7,7 @@ class Precondition
 {
 private:
 	string m_name;
-
+			
 public:
 	//Constructors
 	Precondition();
@@ -15,11 +15,15 @@ public:
 	//Operator=
 
 	//Destructor
+	~Precondition();
 
 	//Getter
 
 	//Setter
 
 	//Functions
+
+		
 };
+
 

@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
-
+#include "Ressources.h"
+#include "Besoins.h"
+#include "Recolte.h"
 
 class Villageois
 {
     private:
 
-        int life;
-    
-
+        int m_life;
 
     public: 
         
@@ -20,15 +20,14 @@ class Villageois
         ~Villageois();
 
         //Fonction
-        void getDammage(int nbDammages);
-        void getWood();
-        void goHunt();
-        void goFishing();
-        void doEat(int viande, int fire, int legumes);
+        void heal(int m_heal);
+        void dommage(int m_dommage);
         void farmer();
         bool isFree();
-        bool isFinishedHisWork();
+        bool isPossibleToAssignedNewAction();
         
+
+       
 
 };
 

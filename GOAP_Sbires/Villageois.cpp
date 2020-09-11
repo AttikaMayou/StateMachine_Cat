@@ -1,4 +1,5 @@
 #include "Villageois.h"
+#include "Besoins.h"
 
 using namespace std;
 
@@ -13,22 +14,28 @@ Villageois::~Villageois()
 
 }
 
-//Fonction
 
-void Villageois::getDammage(int nbDammages)
+
+void Villageois::dommage(int m_dommage)
 {
-    m_life -= nbDammages;
+    m_life -= m_dommage;
 
     if (m_life < 0)
     {
         m_life = 0;
     }
+    
 }
 
 
-void Villageois::doEat(int viande, int fire, int legumes) 
+void Villageois::heal(int m_heal)
 {
+    m_life += m_heal;
 
+    if (m_life > 50)
+    {
+        m_life = 50;
+    }
 }
 
 void Villageois::farmer() 
@@ -41,7 +48,9 @@ bool Villageois::isFree()
     bool isFree(true);
 }
 
-bool Villageois::isFinishedHisWork() 
+bool Villageois::isPossibleToAssignedNewAction()
 {
 
 }
+
+

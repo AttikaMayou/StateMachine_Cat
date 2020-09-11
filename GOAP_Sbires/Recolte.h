@@ -19,7 +19,7 @@ class Recolte
 
 
 		//Fonction
-		void doEat(int viande, int fire, int legumes);
+		void doEat();
 		void doHunt();
 		void farmer();
 
