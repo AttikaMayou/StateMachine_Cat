@@ -3,17 +3,16 @@
 Pet::Pet(): m_name("Pet"), m_hunger(0.0f), m_thirst(0.0f), m_cared(100.0f), m_thirst_factor(1.0f),
             m_hunger_factor(1.0f), m_cared_factor(1.0f), m_type(PetType::ANY)
 {
-	m_state_machine = new StateMachine();
 }
 
 //Add ASSERT => NEVER has 1.0f > factor > 5.0f and needs etc 0.0f > values > 100.0f
-Pet::Pet(string name, float hunger, float thirst, float cared, float thirst_factor, float hunger_factor, float cared_factor, PetType type, StateMachine* state_machine) :
-	m_name(name), m_hunger(hunger), m_thirst(thirst), m_cared(cared), m_thirst_factor(thirst_factor), m_hunger_factor(hunger_factor), m_cared_factor(cared_factor), m_type(type), m_state_machine(state_machine)
+Pet::Pet(string name, float thirst_factor, float hunger_factor, float cared_factor, PetType type) :
+	m_name(name), m_hunger(0.0f), m_thirst(0.0f), m_cared(100.0f), m_thirst_factor(thirst_factor), m_hunger_factor(hunger_factor), m_cared_factor(cared_factor), m_type(type)
 {
 }
 
 Pet::Pet(const Pet& p):
-	m_name(p.get_name()), m_hunger(p.get_hunger()), m_thirst(p.get_thirst()), m_cared(p.get_cared()), m_type(p.get_type()), m_state_machine(p.get_state_machine())
+	m_name(p.get_name()), m_hunger(p.get_hunger()), m_thirst(p.get_thirst()), m_cared(p.get_cared()), m_type(p.get_type())
 {
 }
 
@@ -27,13 +26,11 @@ Pet& Pet::operator=(const Pet& pet)
 	m_hunger_factor = pet.get_hunger_factor();
 	m_cared_factor = pet.get_cared_factor();
 	m_type = pet.get_type();
-	m_state_machine = pet.get_state_machine();
 	return *this;
 }
 
 Pet::~Pet()
 {
-	delete m_state_machine;
 }
 
 void Pet::set_name(string name)
@@ -76,18 +73,11 @@ void Pet::set_type(PetType type)
 	m_type = type;
 }
 
-void Pet::set_state_machine(StateMachine* state_machine)
-{
-	m_state_machine = state_machine;
-}
-
 void Pet::update_pet()
 {
-	m_thirst -= 1.0f * m_thirst_factor;
-	m_hunger -= 1.0f * m_hunger_factor;
+	m_thirst += 1.0f * m_thirst_factor;
+	m_hunger += 1.0f * m_hunger_factor;
 	m_cared -= 1.0f * m_cared_factor;
-
-	m_state_machine->process_state();
 }
 
 void Pet::reset_needs()
